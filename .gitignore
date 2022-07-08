@@ -21,6 +21,6 @@ target
 build
 .idea
 .github
-api/src
+api/target
 *.iml
 api/.openapi-generator

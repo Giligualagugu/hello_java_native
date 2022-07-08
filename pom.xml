@@ -71,7 +71,7 @@
                             <BP_NATIVE_IMAGE>true</BP_NATIVE_IMAGE>
                         </env>
                     </image>
-                    <mainClass>com.example.hello_java_native.HelloJavaNativeApplication</mainClass>
+                    <mainClass>com.example.hello_java_native.HelloJavaNativeRunner</mainClass>
                 </configuration>
             </plugin>
             <plugin>

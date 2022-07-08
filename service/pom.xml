@@ -22,7 +22,7 @@
         <dependency>
             <groupId>com.example</groupId>
             <artifactId>hello-java-native-api</artifactId>
-            <version>1.0.0</version>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
 

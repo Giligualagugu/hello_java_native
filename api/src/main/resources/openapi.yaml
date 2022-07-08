@@ -1,0 +1,76 @@
+openapi: 3.0.3
+info:
+  description: XukeleAPi
+  title: XukeleAPi
+  version: 1.0.0
+servers:
+- url: https
+paths:
+  /kele:
+    get:
+      description: 查询用户信息
+      operationId: queryUserInfoById
+      parameters:
+      - description: 用户id
+        explode: true
+        in: query
+        name: id
+        required: false
+        schema:
+          format: int64
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserInfoRsp'
+          description: OK
+      x-accepts: application/json
+components:
+  schemas:
+    KeleResult:
+      example:
+        code: 0
+        message: message
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+      type: object
+    UserInfoData:
+      example:
+        skills:
+        - skills
+        - skills
+        age: 6
+        username: username
+      properties:
+        username:
+          type: string
+        age:
+          type: integer
+        skills:
+          items:
+            type: string
+          type: array
+      type: object
+    UserInfoRsp:
+      example:
+        ret:
+          code: 0
+          message: message
+        data:
+          skills:
+          - skills
+          - skills
+          age: 6
+          username: username
+      properties:
+        ret:
+          $ref: '#/components/schemas/KeleResult'
+        data:
+          $ref: '#/components/schemas/UserInfoData'
+      type: object

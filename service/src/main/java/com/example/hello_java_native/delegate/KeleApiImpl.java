@@ -1,4 +1,4 @@
-package com.example.hello_java_native.controller;
+package com.example.hello_java_native.delegate;
 
 import com.example.hello_java_native.gen.api.KeleApiDelegate;
 import com.example.hello_java_native.gen.model.KeleResult;
@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
 @Component
-public class DemoController implements KeleApiDelegate {
+public class KeleApiImpl implements KeleApiDelegate {
 
     @Override
     public ResponseEntity<UserInfoRsp> queryUserInfoById(Long id) {

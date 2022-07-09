@@ -1,8 +1,0 @@
-definitions:
-  Address:
-    type: object
-    properties:
-      country:
-        type: string
-      province:
-        type: string

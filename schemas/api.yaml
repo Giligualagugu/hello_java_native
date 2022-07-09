@@ -1,0 +1,53 @@
+swagger: "2.0"
+info:
+  title: Sample API
+  description: API description in Markdown.
+  version: 1.0.0
+host: api.example.com
+schemes:
+  - https
+paths:
+  /kele:
+    get:
+      description: 查询用户信息
+      operationId: queryUserInfoById
+      parameters:
+        - description: 用户id
+          in: query
+          name: id
+          required: false
+          type: integer
+          format: int64
+      responses:
+        "200":
+          schema:
+            $ref: '#/definitions/UserInfoRsp'
+          description: OK
+
+
+definitions:
+  KeleResult:
+    type: object
+    properties:
+      code:
+        type: integer
+      message:
+        type: string
+  UserInfoData:
+    type: object
+    properties:
+      username:
+        type: string
+      age:
+        type: integer
+      skills:
+        items:
+          type: string
+        type: array
+  UserInfoRsp:
+    type: object
+    properties:
+      ret:
+        $ref: '#/definitions/KeleResult'
+      data:
+        $ref: '#/definitions/UserInfoData'

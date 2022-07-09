@@ -40,7 +40,7 @@
                         </goals>
                         <configuration>
                             <generateSupportingFiles>false</generateSupportingFiles>
-                            <inputSpec>${project.parent.basedir}/schemas/openapi.yaml</inputSpec>
+                            <inputSpec>${project.parent.basedir}/schemas/api.yaml</inputSpec>
                             <language>spring</language>
                             <output>${project.basedir}</output>
                             <apiPackage>com.example.hello_java_native.api</apiPackage>

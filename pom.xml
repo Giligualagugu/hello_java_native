@@ -71,28 +71,9 @@
                             <BP_NATIVE_IMAGE>true</BP_NATIVE_IMAGE>
                         </env>
                     </image>
-                    <mainClass>com.example.hello_java_native.HelloJavaNativeRunner</mainClass>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.springframework.experimental</groupId>
-                <artifactId>spring-aot-maven-plugin</artifactId>
-                <version>${spring-native.version}</version>
-                <executions>
-                    <execution>
-                        <id>test-generate</id>
-                        <goals>
-                            <goal>test-generate</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>generate</id>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+
         </plugins>
     </build>
     <repositories>

@@ -27,6 +27,30 @@
     </dependencies>
 
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.experimental</groupId>
+                <artifactId>spring-aot-maven-plugin</artifactId>
+                <version>${spring-native.version}</version>
+                <executions>
+                    <execution>
+                        <id>test-generate</id>
+                        <goals>
+                            <goal>test-generate</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>generate</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
 
     <profiles>
         <profile>
@@ -80,7 +104,6 @@
                             <!--                            <classpath>-->
                             <!--                                <param>${project.build.directory}/${project.artifactId}-${project.version}-shaded.jar</param>-->
                             <!--                            </classpath>-->
-                            <mainClass>com.example.hello_java_native.HelloJavaNativeApplication</mainClass>
                         </configuration>
                     </plugin>
                     <plugin>

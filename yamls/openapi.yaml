@@ -27,8 +27,27 @@ paths:
                 $ref: '#/components/schemas/UserInfoRsp'
           description: OK
       x-accepts: application/json
+    post:
+      x-accepts: application/json
+      description: 保存用户信息
+      operationId: saveUserInfo
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserInfoData'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SaveUserInfoRsp'
+
 components:
   schemas:
+    SaveUserInfoRsp:
+      $ref: '#/components/schemas/KeleResult'
     KeleResult:
       properties:
         code:

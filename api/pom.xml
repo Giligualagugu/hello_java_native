@@ -19,40 +19,35 @@
     </properties>
 
     <dependencies>
+
         <dependency>
-            <groupId>org.openapitools</groupId>
-            <artifactId>openapi-generator</artifactId>
-            <version>${openapi-generator-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.openapitools</groupId>
-            <artifactId>jackson-databind-nullable</artifactId>
-            <version>0.2.3</version>
+            <groupId>io.swagger.core.v3</groupId>
+            <artifactId>swagger-core</artifactId>
+            <version>2.2.0</version>
         </dependency>
     </dependencies>
 
     <build>
         <plugins>
             <plugin>
-                <groupId>org.openapitools</groupId>
-                <artifactId>openapi-generator-maven-plugin</artifactId>
-                <version>${openapi-generator-version}</version>
+                <groupId>io.swagger.codegen.v3</groupId>
+                <artifactId>swagger-codegen-maven-plugin</artifactId>
+                <version>3.0.34</version>
                 <executions>
                     <execution>
                         <goals>
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <groupId>${project.groupId}</groupId>
-                            <artifactId>${project.artifactId}</artifactId>
+                            <generateSupportingFiles>false</generateSupportingFiles>
                             <inputSpec>${project.parent.basedir}/schemas/openapi.yaml</inputSpec>
-                            <generatorName>spring</generatorName>
+                            <language>spring</language>
                             <output>${project.basedir}</output>
-                            <skipOperationExample>true</skipOperationExample>
                             <apiPackage>com.example.hello_java_native.api</apiPackage>
                             <modelPackage>com.example.hello_java_native.model</modelPackage>
                             <configOptions>
                                 <delegatePattern>true</delegatePattern>
+<!--                                <sourceFolder>src/main/java/com/example/hello_java_native</sourceFolder>-->
                             </configOptions>
                         </configuration>
                     </execution>

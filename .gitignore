@@ -22,5 +22,7 @@ build
 .idea
 .github
 api/target
+api/src
+api/.swagger-codegen
 *.iml
 api/.openapi-generator

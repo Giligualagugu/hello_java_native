@@ -4,34 +4,41 @@ info:
   description: API description in Markdown.
   version: 1.0.0
 host: api.example.com
+basePath: /xukele/v1
 schemes:
   - https
+  - http
 paths:
   /kele:
     get:
+      produces:
+        - application/json
+      consumes:
+        - application/json
       description: 查询用户信息
       operationId: queryUserInfoById
       parameters:
         - description: 用户id
           in: query
           name: id
-          required: false
+          required: true
           type: integer
           format: int64
       responses:
         "200":
           schema:
+            type: object
             $ref: '#/definitions/UserInfoRsp'
           description: OK
-
-
 definitions:
   KeleResult:
     type: object
     properties:
       code:
+        description: 业务码
         type: integer
       message:
+        description: 业务信息
         type: string
   UserInfoData:
     type: object
@@ -44,6 +51,9 @@ definitions:
         items:
           type: string
         type: array
+#      address:
+#        type: object
+#        $ref: '.pojo.yaml#/definitions/Address'
   UserInfoRsp:
     type: object
     properties:

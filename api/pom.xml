@@ -19,7 +19,21 @@
     </properties>
 
     <dependencies>
-
+        <dependency>
+            <groupId>org.openapitools</groupId>
+            <artifactId>jackson-databind-nullable</artifactId>
+            <version>0.2.3</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.joschi.jackson</groupId>
+            <artifactId>jackson-datatype-threetenbp</artifactId>
+            <version>2.6.4</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-boot-starter</artifactId>
+            <version>3.0.0</version>
+        </dependency>
         <dependency>
             <groupId>io.swagger.core.v3</groupId>
             <artifactId>swagger-core</artifactId>
@@ -30,29 +44,66 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>io.swagger.codegen.v3</groupId>
-                <artifactId>swagger-codegen-maven-plugin</artifactId>
-                <version>3.0.34</version>
+                <groupId>org.openapitools</groupId>
+                <artifactId>openapi-generator-maven-plugin</artifactId>
+                <version>${openapi-generator-version}</version>
                 <executions>
                     <execution>
                         <goals>
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <generateSupportingFiles>false</generateSupportingFiles>
-                            <inputSpec>${project.parent.basedir}/schemas/api.yaml</inputSpec>
-                            <language>spring</language>
+                            <additionalProperties>
+                                <property>
+                                    <key>server.port</key>
+                                    <value>8088</value>
+                                </property>
+                            </additionalProperties>
+                            <generateSupportingFiles>true</generateSupportingFiles>
+                            <inputSpec>${project.parent.basedir}/yamls/openapi.yaml</inputSpec>
+<!--                            <language>spring</language>-->
+                            <generatorName>spring</generatorName>
                             <output>${project.basedir}</output>
-                            <apiPackage>com.example.hello_java_native.api</apiPackage>
-                            <modelPackage>com.example.hello_java_native.model</modelPackage>
+                            <apiPackage>com.example.hello_java_native.gen.api</apiPackage>
+                            <modelPackage>com.example.hello_java_native.gen.model</modelPackage>
                             <configOptions>
                                 <delegatePattern>true</delegatePattern>
-<!--                                <sourceFolder>src/main/java/com/example/hello_java_native</sourceFolder>-->
+                                <basePackage>com.example.hello_java_native.gen</basePackage>
+                                <configPackage>com.example.hello_java_native.gen.configuration</configPackage>
                             </configOptions>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
+            <!--            <plugin>-->
+            <!--                <groupId>io.swagger.codegen.v3</groupId>-->
+            <!--                <artifactId>swagger-codegen-maven-plugin</artifactId>-->
+            <!--                <version>3.0.34</version>-->
+            <!--                <executions>-->
+            <!--                    <execution>-->
+            <!--                        <goals>-->
+            <!--                            <goal>generate</goal>-->
+            <!--                        </goals>-->
+            <!--                        <configuration>-->
+            <!--                            <generateSupportingFiles>false</generateSupportingFiles>-->
+            <!--                            <inputSpec>${project.parent.basedir}/yamls/openapi.yaml</inputSpec>-->
+            <!--                            <language>spring</language>-->
+            <!--                            <output>${project.basedir}</output>-->
+            <!--                            <apiPackage>com.example.hello_java_native.gen.api</apiPackage>-->
+            <!--                            <modelPackage>com.example.hello_java_native.gen.model</modelPackage>-->
+            <!--                            <configOptions>-->
+            <!--                                &lt;!&ndash;                                <interfaceOnly>true</interfaceOnly>&ndash;&gt;-->
+            <!--                                <delegatePattern>true</delegatePattern>-->
+            <!--                                <basePackage>com.example.hello_java_native.gen</basePackage>-->
+            <!--                                <configPackage>com.example.hello_java_native.gen.configuration</configPackage>-->
+            <!--                                &lt;!&ndash;                                <openFeign>true</openFeign>&ndash;&gt;-->
+            <!--                                &lt;!&ndash;                                <generateForOpenFeign>true</generateForOpenFeign>&ndash;&gt;-->
+            <!--                                &lt;!&ndash;                                <sourceFolder>src/main/java/com/example/hello_java_native</sourceFolder>&ndash;&gt;-->
+            <!--                            </configOptions>-->
+            <!--                        </configuration>-->
+            <!--                    </execution>-->
+            <!--                </executions>-->
+            <!--            </plugin>-->
         </plugins>
     </build>
 </project>

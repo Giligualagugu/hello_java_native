@@ -19,16 +19,13 @@ public class KeleApiImpl implements KeleApiDelegate {
     @Value("${kele.value}")
     Integer age;
 
-    @Autowired
-    NativeWebRequest nativeWebRequest;
+    // webrequest 属于运行时创建的proxy对象,不支持 native-image
+//    @Autowired
+//    NativeWebRequest nativeWebRequest;
 
     @Override
     public ResponseEntity<UserInfoRsp> queryUserInfoById(Long id) {
         return ResponseEntity.ok(new UserInfoRsp().ret(new KeleResult().code(1).message("ok")).data(new UserInfoData().username("xukele").age(age)));
     }
 
-    @Override
-    public Optional<NativeWebRequest> getRequest() {
-        return Optional.ofNullable(nativeWebRequest);
-    }
 }

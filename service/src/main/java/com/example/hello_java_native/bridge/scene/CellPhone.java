@@ -23,4 +23,5 @@ public class CellPhone extends AbstractGameScene {
     public GameScene getGameScene() {
         return GameScene.CELL_PHONE;
     }
+
 }

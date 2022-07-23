@@ -3,12 +3,16 @@ info:
   description: API description in Markdown.
   title: Sample API
   version: 1.0.0
+tags:
+  - name: KeleDemo2
+    description: demo接口
 servers:
   - url: https://api.example.com/xukele/v1
-  - url: http://api.example.com/xukele/v1
 paths:
   /kele:
     get:
+      tags:
+        - KeleDemo1
       description: 查询用户信息
       operationId: queryUserInfoById
       parameters:
@@ -28,6 +32,8 @@ paths:
           description: OK
       x-accepts: application/json
     post:
+      tags:
+        - KeleDemo2
       x-accepts: application/json
       description: 保存用户信息
       operationId: saveUserInfo
@@ -43,6 +49,36 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SaveUserInfoRsp'
+  /time:
+    summary: TimeCompute
+    get:
+      description: 测试桥接
+      tags:
+        - KeleDemo3
+      operationId: testBridge
+      parameters:
+        - in: query
+          name: uid
+          required: true
+          schema:
+            format: int64
+            type: integer
+        - in: query
+          name: appId
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: 时间
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    type: integer
+                  time:
+                    type: integer
 
 components:
   schemas:

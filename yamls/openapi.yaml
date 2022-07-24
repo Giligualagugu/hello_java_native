@@ -1,18 +1,20 @@
-openapi: 3.0.1
+swagger: '2.0'
+host: api.example.com
+schemes:
+  - https
+basePath: /xukele/v1
 info:
   description: API description in Markdown.
   title: Sample API
   version: 1.0.0
 tags:
-  - name: KeleDemo2
+  - name: KeleDemo
     description: demo接口
-servers:
-  - url: https://api.example.com/xukele/v1
 paths:
   /kele:
     get:
       tags:
-        - KeleDemo1
+        - KeleDemo
       description: 查询用户信息
       operationId: queryUserInfoById
       parameters:
@@ -20,95 +22,91 @@ paths:
           in: query
           name: id
           required: true
-          schema:
-            format: int64
-            type: integer
+          format: int64
+          type: integer
       responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UserInfoRsp'
+        '200':
           description: OK
+          schema:
+            $ref: '#/definitions/UserInfoRsp'
       x-accepts: application/json
+      produces:
+        - application/json
     post:
       tags:
-        - KeleDemo2
+        - KeleDemo
       x-accepts: application/json
       description: 保存用户信息
       operationId: saveUserInfo
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UserInfoData'
       responses:
-        200:
+        '200':
           description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SaveUserInfoRsp'
+          schema:
+            $ref: '#/definitions/SaveUserInfoRsp'
+      parameters:
+        - name: body
+          in: body
+          schema:
+            $ref: '#/definitions/UserInfoData'
+      consumes:
+        - application/json
+      produces:
+        - application/json
   /time:
-    summary: TimeCompute
     get:
       description: 测试桥接
       tags:
-        - KeleDemo3
+        - KeleDemo
       operationId: testBridge
       parameters:
         - in: query
           name: uid
           required: true
-          schema:
-            format: int64
-            type: integer
+          format: int64
+          type: integer
         - in: query
           name: appId
           required: true
-          schema:
-            type: string
+          type: string
       responses:
-        200:
+        '200':
           description: 时间
-          content:
-            application/json:
-              schema:
-                properties:
-                  code:
-                    type: integer
-                  time:
-                    type: integer
+          schema:
+            properties:
+              code:
+                type: integer
+              time:
+                type: integer
+      produces:
+        - application/json
 
-components:
-  schemas:
-    SaveUserInfoRsp:
-      $ref: '#/components/schemas/KeleResult'
-    KeleResult:
-      properties:
-        code:
-          description: 业务码
-          type: integer
-        message:
-          description: 业务信息
+definitions:
+  SaveUserInfoRsp:
+    $ref: '#/definitions/KeleResult'
+  KeleResult:
+    properties:
+      code:
+        description: 业务码
+        type: integer
+      message:
+        description: 业务信息
+        type: string
+    type: object
+  UserInfoData:
+    properties:
+      username:
+        type: string
+      age:
+        type: integer
+      skills:
+        items:
           type: string
-      type: object
-    UserInfoData:
-      properties:
-        username:
-          type: string
-        age:
-          type: integer
-        skills:
-          items:
-            type: string
-          type: array
-      type: object
-    UserInfoRsp:
-      properties:
-        ret:
-          $ref: '#/components/schemas/KeleResult'
-        data:
-          $ref: '#/components/schemas/UserInfoData'
-      type: object
-
+        type: array
+    type: object
+  UserInfoRsp:
+    properties:
+      ret:
+        $ref: '#/definitions/KeleResult'
+      data:
+        $ref: '#/definitions/UserInfoData'
+    type: object

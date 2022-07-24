@@ -43,21 +43,46 @@
 
     <build>
         <plugins>
+            <!--            <plugin>-->
+            <!--                <groupId>org.openapitools</groupId>-->
+            <!--                <artifactId>openapi-generator-maven-plugin</artifactId>-->
+            <!--                <version>${openapi-generator-version}</version>-->
+            <!--                <executions>-->
+            <!--                    <execution>-->
+            <!--                        <goals>-->
+            <!--                            <goal>generate</goal>-->
+            <!--                        </goals>-->
+            <!--                        <configuration>-->
+            <!--                            <generateSupportingFiles>true</generateSupportingFiles>-->
+            <!--                            <supportingFilesToGenerate>ApiUtil.java</supportingFilesToGenerate>-->
+            <!--                            <inputSpec>${project.parent.basedir}/yamls/openapi.yaml</inputSpec>-->
+            <!--                            &lt;!&ndash;                            <language>spring</language>&ndash;&gt;-->
+            <!--                            <generatorName>spring</generatorName>-->
+            <!--                            <output>${project.basedir}</output>-->
+            <!--                            <apiPackage>com.example.hello_java_native.gen.api</apiPackage>-->
+            <!--                            <modelPackage>com.example.hello_java_native.gen.model</modelPackage>-->
+            <!--                            <configOptions>-->
+            <!--                                <delegatePattern>true</delegatePattern>-->
+            <!--                                <basePackage>com.example.hello_java_native.gen</basePackage>-->
+            <!--                                <configPackage>com.example.hello_java_native.gen.configuration</configPackage>-->
+            <!--                            </configOptions>-->
+            <!--                        </configuration>-->
+            <!--                    </execution>-->
+            <!--                </executions>-->
+            <!--            </plugin>-->
             <plugin>
-                <groupId>org.openapitools</groupId>
-                <artifactId>openapi-generator-maven-plugin</artifactId>
-                <version>${openapi-generator-version}</version>
+                <groupId>io.swagger.codegen.v3</groupId>
+                <artifactId>swagger-codegen-maven-plugin</artifactId>
+                <version>3.0.34</version>
                 <executions>
                     <execution>
                         <goals>
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <generateSupportingFiles>true</generateSupportingFiles>
-                            <supportingFilesToGenerate>ApiUtil.java</supportingFilesToGenerate>
+                            <generateSupportingFiles>false</generateSupportingFiles>
                             <inputSpec>${project.parent.basedir}/yamls/openapi.yaml</inputSpec>
-                            <!--                            <language>spring</language>-->
-                            <generatorName>spring</generatorName>
+                            <language>spring</language>
                             <output>${project.basedir}</output>
                             <apiPackage>com.example.hello_java_native.gen.api</apiPackage>
                             <modelPackage>com.example.hello_java_native.gen.model</modelPackage>
@@ -70,35 +95,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <!--            <plugin>-->
-            <!--                <groupId>io.swagger.codegen.v3</groupId>-->
-            <!--                <artifactId>swagger-codegen-maven-plugin</artifactId>-->
-            <!--                <version>3.0.34</version>-->
-            <!--                <executions>-->
-            <!--                    <execution>-->
-            <!--                        <goals>-->
-            <!--                            <goal>generate</goal>-->
-            <!--                        </goals>-->
-            <!--                        <configuration>-->
-            <!--                            <generateSupportingFiles>false</generateSupportingFiles>-->
-            <!--                            <inputSpec>${project.parent.basedir}/yamls/openapi.yaml</inputSpec>-->
-            <!--                            <language>spring</language>-->
-            <!--                            <output>${project.basedir}</output>-->
-            <!--                            <apiPackage>com.example.hello_java_native.gen.api</apiPackage>-->
-            <!--                            <modelPackage>com.example.hello_java_native.gen.model</modelPackage>-->
-            <!--                            <configOptions>-->
-            <!--                                &lt;!&ndash;                                <interfaceOnly>true</interfaceOnly>&ndash;&gt;-->
-            <!--                                <delegatePattern>true</delegatePattern>-->
-            <!--                                <basePackage>com.example.hello_java_native.gen</basePackage>-->
-            <!--                                <configPackage>com.example.hello_java_native.gen.configuration</configPackage>-->
-            <!--                                &lt;!&ndash;                                <openFeign>true</openFeign>&ndash;&gt;-->
-            <!--                                &lt;!&ndash;                                <generateForOpenFeign>true</generateForOpenFeign>&ndash;&gt;-->
-            <!--                                &lt;!&ndash;                                <sourceFolder>src/main/java/com/example/hello_java_native</sourceFolder>&ndash;&gt;-->
-            <!--                            </configOptions>-->
-            <!--                        </configuration>-->
-            <!--                    </execution>-->
-            <!--                </executions>-->
-            <!--            </plugin>-->
         </plugins>
     </build>
 </project>
